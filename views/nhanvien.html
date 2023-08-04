@@ -1,0 +1,152 @@
+<button class="btn btn-primary" data-bs-toggle="modal" ng-click="init()" data-bs-target="#exampleModal">Thêm mới</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên nhân viên</th>
+            <th>Ngày sinh nhân viên</th>
+            <th>Lương nhân viên</th>
+            <th>Giới tính nhân viên</th>
+            <th>Địa chỉ nhân viên</th>
+            <th>Tuổi nhân viên</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="(key , value) in res">
+            <td>{{ key + 1 }}</td>
+            <td>{{ value.nameNV }}</td>
+            <td>{{ value.ngaysinhNV }}</td>
+            <td>{{ value.luong }}</td>
+            <td>{{ value.gioitinh | genderStatus }}</td>
+            <td>{{ value.diachi }}</td>
+            <td>{{ value.tuoi }}</td>
+            <td>
+                <button ng-click="confirmUpdate(value.id)" data-bs-toggle="modal" data-bs-target="#updateModal" class="btn btn-success">Sửa</button>
+                <button ng-click="confirmDelete(value.id)" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger">Xóa</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Thêm thông tin mới</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" ng-model="maxId">
+            <div>
+                <label for="name">Tên</label>
+                <input type="text" ng-model="inputValue.name" id="name" class="form-control">
+                <small class="text-danger" ng-show="kiemtradulieu.name">Bạn chưa nhập tên nhân viên</small>
+            </div>
+            <div>
+                <label for="salary">Lương</label>
+                <input type="text" ng-model="inputValue.salary" id="salary" class="form-control">
+                <small class="text-danger" ng-show="kiemtradulieu.salary">Bạn chưa nhập lương nhân viên</small>
+            </div>
+            <div>
+                <label for="date">Ngày sinh</label>
+                <input type="date" ng-model="inputValue.date" id="date" class="form-control">
+                <small class="text-danger" ng-show="kiemtradulieu.date">Bạn chưa nhập ngày sinh nhân viên</small>
+            </div>
+            <div>
+                <span>Giới tính</span>
+                <input type="radio" name="gender" ng-model="inputValue.gender" id="male" value="1">
+                <label for="male"> Male</label>
+                <input type="radio" name="gender" ng-model="inputValue.gender" id="female" value="2">
+                <label for="female">FeMale</label>
+            </div>
+            <div>
+                <label for="address">Địa chỉ</label>
+                <input type="text" ng-model="inputValue.address" id="address" class="form-control">
+            </div>
+            <div>
+                <label for="age">Tuổi</label>
+                <input type="text" ng-model="inputValue.age" id="age" class="form-control">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" ng-click="onSubmit()" class="btn btn-primary">Lưu</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<!-- updateModal -->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateModalLabel">Sửa thông tin</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" ng-model="maxId">
+            <div>
+                <label for="name">Tên</label>
+                <input type="text" ng-model="inputValue.name" id="name" class="form-control">
+                <small class="text-danger" ng-show="kiemtradulieu.name">Bạn chưa nhập tên nhân viên</small>
+            </div>
+            <div>
+                <label for="salary">Lương</label>
+                <input type="text" ng-model="inputValue.salary" id="salary" class="form-control">
+                <small class="text-danger" ng-show="kiemtradulieu.salary">Bạn chưa nhập lương nhân viên</small>
+            </div>
+            <div>
+                <label for="date">Ngày sinh</label>
+                <input type="date" ng-model="inputValue.date" id="date" class="form-control">
+                <small class="text-danger" ng-show="kiemtradulieu.date">Bạn chưa nhập ngày sinh nhân viên</small>
+            </div>
+            <div>
+                <span>Giới tính</span>
+                <input type="radio" name="gender" ng-model="inputValue.gender" id="male" value="1">
+                <label for="male"> Male</label>
+                <input type="radio" name="gender" ng-model="inputValue.gender" id="female" value="2">
+                <label for="female">FeMale</label>
+            </div>
+            <div>
+                <label for="address">Địa chỉ</label>
+                <input type="text" ng-model="inputValue.address" id="address" class="form-control">
+            </div>
+            <div>
+                <label for="age">Tuổi</label>
+                <input type="text" ng-model="inputValue.age" id="age" class="form-control">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" ng-click="onUpdate()" class="btn btn-primary">Sửa</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Thông báo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Bạn có thực sự muốn xóa không
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" ng-click="onDelete()">Xác nhận xóa</button>
+        </div>
+      </div>
+    </div>
+</div>

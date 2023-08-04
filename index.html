@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.3/angular-route.min.js"></script>
+    <script src="controllers/TrangChuController.js"></script>
+    <script src="controllers/NhanVienController.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-include="'views/layouts/_header.html'"></div>
+    <ul>
+        <li>
+            <a href="#!/">Trang chủ</a>
+        </li>
+        <li>
+            <a href="#!/nhan-vien">Nhân viên</a>
+        </li>
+        <li>
+            <a href="#!/bai-bao">Bài báo</a>
+        </li>
+    </ul>
+
+
+    <div ng-view></div>
+    <div ng-include="'views/layouts/_footer.html'"></div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        var app = angular.module("myApp", ['ngRoute'])
+        app.config(function($routeProvider){
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'views/trangchu.html',
+                    controller: TrangChuController
+                })
+                .when('/nhan-vien', {
+                    templateUrl: 'views/nhanvien.html',
+                    controller: NhanVienController
+                })
+                .otherwise({
+                    redirectTo: '/'
+                })
+        })
+
+
+        app.filter('genderStatus', function(){
+            return (input) => {
+                return input == 1 ? "Nam" : "Nữ";
+            }
+        })
+    </script>
+</body>
+</html>

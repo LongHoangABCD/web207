@@ -1,0 +1,43 @@
+{
+  "employees": [
+    {
+      "nameNV": "Hải",
+      "ngaysinhNV": "18/5/2002",
+      "luong": "7000000",
+      "gioitinh": "1",
+      "diachi": "Hải Phòng",
+      "tuoi": "24",
+      "id": 2
+    },
+    {
+      "id": 9,
+      "nameNV": "Thiện",
+      "ngaysinhNV": "3/8/2023",
+      "luong": "sdv",
+      "gioitinh": "1",
+      "diachi": "dsvsd",
+      "tuoi": "s233"
+    },
+    {
+      "id": 10,
+      "nameNV": "ấ",
+      "ngaysinhNV": "11/8/2023",
+      "luong": "12412",
+      "gioitinh": "1",
+      "diachi": "12421",
+      "tuoi": "22"
+    },
+    {
+      "id": 11,
+      "nameNV": "Longhh7",
+      "ngaysinhNV": "19/8/2023",
+      "luong": "3242323",
+      "gioitinh": "1",
+      "diachi": "Hà nội 2",
+      "tuoi": "43"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
